@@ -1,12 +1,12 @@
 <!ENTITY shelve.label "Shelve">
 <!ENTITY shelveMenu.accesskey "V">
 <!ENTITY shelveContextUrl.label "Shelve Link&amp;#8230;">
-<!ENTITY shelveContextUrl.accesskey "v">
+<!ENTITY shelveContextUrl.accesskey "">
 <!ENTITY shelveContextImage.label "Shelve Image&amp;#8230;">
-<!ENTITY shelveContextImage.accesskey "v">
+<!ENTITY shelveContextImage.accesskey "h">
 <!ENTITY shelveContextSelection.label "Shelve Selection as Text&amp;#8230;">
-<!ENTITY shelveContextSelection.accesskey "V">
+<!ENTITY shelveContextSelection.accesskey "">
 <!ENTITY shelveContextUrlsInSelection.label "Shelve URLs in Selection&amp;#8230;">
-<!ENTITY shelveContextUrlsInSelection.accesskey "V">
+<!ENTITY shelveContextUrlsInSelection.accesskey "">
 <!ENTITY shelveToolbar.label "Shelve">
 <!ENTITY shelveToolbar.tooltip "Shelve - save the current page to some pre-defined folder">
