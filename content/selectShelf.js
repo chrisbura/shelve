@@ -96,16 +96,17 @@ var selectShelf = {
     onOK: function() {
         // shelveUtils.debug('onOK1 filename=', filename);
         // shelveUtils.debug('onOK1 ext=', selectShelf.getExtension());
-        var listbox = document.getElementById('theShelves');
-        var shelfIndex = listbox.selectedIndex;
-        if (shelfIndex < 0) {
-            alert(shelveUtils.localized('select.shelf'));
-            return false;
-        } else if (selectShelf.finalized || selectShelf.onSelect(true, false)) {
+        if (selectShelf.finalized || selectShelf.onSelect(true, false)) {
             var filename = document.getElementById('filename').value;
             // shelveUtils.debug('onOK2 filename=', filename);
             // shelveUtils.debug('onOK2 ext=', selectShelf.getExtension());
             var shelfId = selectShelf.getShelfId();
+
+            if (!shelfId) {
+                alert(shelveUtils.localized('select.shelf'));
+                return false;
+            }
+
             window.arguments[0].sp_params = {
                 doc: window.arguments[0].inn.doc,
                 filename: filename,
@@ -212,14 +213,14 @@ var selectShelf = {
 
     getShelfId: function() {
         var listbox = document.getElementById('theShelves');
-        var shelfIndex = listbox.selectedIndex;
-        // shelveUtils.debug('selectShelf getShelfId shelfIndex Index=', shelfIndex);
-        if (shelfIndex >= 0) {
-            // var rv1 = window.arguments[0].inn.shelfNos[shelfIndex];
-            // shelveUtils.debug('selectShelf getShelfId rv1=', rv1);
-            var rv2 = listbox.selectedItem.value;
-            // shelveUtils.debug('selectShelf getShelfId rv2=', rv2);
-            return rv2;
+
+        // If no item is selected, select the first item in the list
+        if (listbox.itemCount > 0 && listbox.selectedIndex === -1) {
+            listbox.selectedIndex = 0;
+        }
+
+        if (listbox.selectedIndex >= 0) {
+            return listbox.selectedItem.value;
         } else {
             return null;
         }
